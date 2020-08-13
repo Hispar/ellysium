@@ -13,3 +13,7 @@ urlpatterns = [
     url(r'^api/', include('shuup.api.urls')),
     url(r'^', include('shuup.front.urls', namespace="shuup", app_name="shuup")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(
+        settings.STATIC_URL, document_root=settings.STATIC_ROOT)

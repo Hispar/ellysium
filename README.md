@@ -1,3 +1,7 @@
+# Ellysium
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 # Shuup Project Template
 
 Use this template for simple Django project with Shuup.

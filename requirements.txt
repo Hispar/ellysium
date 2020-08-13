@@ -82,3 +82,6 @@ urllib3==1.24.1           # via requests
 weasyprint==44
 webencodings==0.5.1       # via html5lib, tinycss2
 xlrd==1.2.0               # via shuup
+
+gunicorn==20.0.4
+django-heroku==0.3.1

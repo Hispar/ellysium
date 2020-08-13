@@ -1,6 +1,7 @@
 import os
 
 import dj_database_url
+import django_heroku
 import environ
 
 env = environ.Env(DEBUG=(bool, False))
@@ -15,7 +16,7 @@ BASE_DIR = root()
 
 DEBUG = env('DEBUG')
 
-env.read_env(os.path.join(BASE_DIR, 'shuup-project-template', '.env'))
+env.read_env(os.path.join(BASE_DIR, 'ellysium', '.env'))
 
 SECRET_KEY = env('SECRET_KEY', default='xxx')
 
@@ -24,8 +25,8 @@ DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3')}
 MEDIA_URL = env('MEDIA_URL', default='/media/')
 STATIC_URL = env('STATIC_URL', default='/static/')
 
-MEDIA_ROOT = root(env('MEDIA_LOCATION', default=os.path.join(BASE_DIR, 'var', 'media')))
-STATIC_ROOT = root(env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'var', 'static')))
+MEDIA_ROOT = root(env('MEDIA_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'media')))
+STATIC_ROOT = root(env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'static')))
 
 SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='USD')
 
@@ -114,7 +115,7 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'project.urls'
 WSGI_APPLICATION = 'project.wsgi.application'
-LANGUAGE_CODE = env('LANGUAGE_CODE', default='en')
+LANGUAGE_CODE = env('LANGUAGE_CODE', default='es')
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
@@ -130,19 +131,13 @@ SITE_ID = env('SITE_ID', default=1)
 
 LANGUAGE_CHOICES = [
     ('en', 'English'),
-    ('fi', 'Finnish'),
-    ('it', 'Italian'),
-    ('ja', 'Japanese'),
-    ('pt-br', 'Brazilian Portuguese'),
-    ('ru', 'Russian'),
-    ('sv', 'Swedish'),
-    ('zh-hans', 'Simplified Chinese'),
+    ('es', 'Spanish'),
 ]
 
-selected_languages = env('LANGUAGES', default='en,fi,ja,zh-hans,pt-br,it').split(',')
+selected_languages = env('LANGUAGES', default='en,es').split(',')
 LANGUAGES = [(code, name) for code, name in LANGUAGE_CHOICES if code in selected_languages]
 
-PARLER_DEFAULT_LANGUAGE_CODE = env('PARLER_DEFAULT_LANGUAGE_CODE', default='en')
+PARLER_DEFAULT_LANGUAGE_CODE = env('PARLER_DEFAULT_LANGUAGE_CODE', default='es')
 
 PARLER_LANGUAGES = {
     None: [{'code': c, 'name': n} for (c, n) in LANGUAGES],
@@ -184,10 +179,6 @@ TEMPLATES = [
 ]
 
 CACHES = {'default': env.cache(default='memcache://127.0.0.1:11211?key_prefix=project')}
-
-LOGIN_URL = "/login/"
-
-SESSION_SERIALIZER = "django.contrib.sessions.serializers.PickleSerializer"
 
 SHUUP_PRICING_MODULE = "customer_group_pricing"
 
@@ -234,3 +225,5 @@ SHUUP_ERROR_PAGE_HANDLERS_SPEC = [
 ]
 
 SHUUP_SIMPLE_SEARCH_LIMIT = 150
+
+django_heroku.settings(locals())
