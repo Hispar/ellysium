@@ -6,10 +6,17 @@
   "keywords": ["python", "django" ],
   "addons": [ "heroku-postgresql" ],
   "env": {
+    "ALLOWED_HOSTS": {
+      "description": "Comma-separated list of hosts",
+      "value": ".herokuapp.com"
+    },
     "SECRET_KEY": {
       "description": "The secret key for the Django application.",
       "generator": "secret"
     }
+  },
+  "scripts": {
+    "postdeploy": "python manage.py migrate && python manage.py populatedb --createsuperuser --withoutimages"
   },
   "environments": {
     "test": {
