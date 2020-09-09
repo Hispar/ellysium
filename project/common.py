@@ -15,7 +15,7 @@ BASE_DIR = root()
 
 DEBUG = env('DEBUG')
 
-env.read_env(os.path.join(BASE_DIR, 'ellysium', '.env'))
+# env.read_env(os.path.join(BASE_DIR, 'ellysium', '.env'))
 
 SECRET_KEY = env('SECRET_KEY', default='xxx')
 
