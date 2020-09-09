@@ -5,6 +5,7 @@ import environ
 
 env = environ.Env(DEBUG=(bool, False))
 
+
 def optenv(var):
     return env(var, default=None)
 
@@ -26,7 +27,8 @@ STATIC_URL = env('STATIC_URL', default='/static/')
 
 MEDIA_ROOT = root(env('MEDIA_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'media')))
 # STATIC_ROOT = root(env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'static')))
-STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+STATICFILES_DIRS = ()
 
 SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='USD')
 
@@ -34,7 +36,6 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='*').split(',')
 
 EMAIL_CONFIG = env.email_url('EMAIL_URL', default='smtp://localhost:25')
 vars().update(EMAIL_CONFIG)
-
 
 INSTALLED_APPS = [
     # django
@@ -217,7 +218,6 @@ SHUUP_SETUP_WIZARD_PANE_SPEC = [
     "shuup.admin.modules.sample_data.views.SampleObjectsWizardPane",
     "shuup.admin.modules.system.views.TelemetryWizardPane"
 ]
-
 
 SHUUP_ERROR_PAGE_HANDLERS_SPEC = [
     "shuup.admin.error_handlers:AdminPageErrorHandler",
