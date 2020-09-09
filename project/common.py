@@ -24,12 +24,9 @@ DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3')}
 MEDIA_URL = env('MEDIA_URL', default='/media/')
 STATIC_URL = env('STATIC_URL', default='/static/')
 
-# MEDIA_ROOT = root(env('MEDIA_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'media')))
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'media_root')
-
+MEDIA_ROOT = root(env('MEDIA_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'media')))
 # STATIC_ROOT = root(env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'static')))
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'static_root')
-
+STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles/')
 
 SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='USD')
 
