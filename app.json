@@ -13,6 +13,26 @@
     "SECRET_KEY": {
       "description": "The secret key for the Django application.",
       "generator": "secret"
+    },
+    "DEBUG": {
+      "description": "The debug mode for the Django application.",
+      "value": "True"
+    },
+    "LANGUAGE_CODE": {
+      "description": "The application main language.",
+      "value": "es"
+    },
+    "LANGUAGES": {
+      "description": "The application languages.",
+      "value": "es,en"
+    },
+    "PARLER_DEFAULT_LANGUAGE_CODE": {
+      "description": "The application default language.",
+      "value": "es"
+    },
+    "SHOP_CURRENCY": {
+      "description": "The application default currency.",
+      "value": "EUR"
     }
   },
   "scripts": {

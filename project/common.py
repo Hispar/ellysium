@@ -13,8 +13,6 @@ def optenv(var):
 root = environ.Path(__file__) - 3
 
 BASE_DIR = root()
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-PROJECT_DIR = os.path.join(PROJECT_ROOT, '/')
 
 DEBUG = env('DEBUG')
 
@@ -28,9 +26,7 @@ MEDIA_URL = env('MEDIA_URL', default='/media/')
 STATIC_URL = env('STATIC_URL', default='/static/')
 
 MEDIA_ROOT = root(env('MEDIA_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'media')))
-# STATIC_ROOT = root(env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'static')))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles/')
-STATICFILES_DIRS = ()
+STATIC_ROOT = root(env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'ellysium', 'static')))
 
 SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='USD')
 
