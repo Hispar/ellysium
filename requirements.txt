@@ -84,4 +84,4 @@ webencodings==0.5.1       # via html5lib, tinycss2
 xlrd==1.2.0               # via shuup
 
 gunicorn==20.0.4
-django-heroku==0.3.1
+django-heroku==0.3.0
