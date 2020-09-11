@@ -231,3 +231,5 @@ SHUUP_SIMPLE_SEARCH_LIMIT = 150
 
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+SHUUP_ENABLED_ADDONS_FILE = True
