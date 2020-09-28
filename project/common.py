@@ -1,20 +1,29 @@
+# -*- coding: utf-8 -*-
+"""
+Django settings for mysite project.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/2.2/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/2.2/ref/settings/
+"""
+
 import os
 
 import dj_database_url
 import environ
+from common.environ import MyEnv
 
 env = environ.Env(DEBUG=(bool, False))
 
+PREFIX_ENVVARS = "DJANGO"
+env = MyEnv(PREFIX_ENVVARS)
 
-def optenv(var):
-    return env(var, default=None)
-
-
-root = environ.Path(__file__) - 3
+root = environ.Path(__file__) - 2
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 
 DEBUG = env('DEBUG')
 
@@ -28,7 +37,7 @@ MEDIA_URL = env('MEDIA_URL', default='/media/')
 STATIC_URL = env('STATIC_URL', default='/static/')
 
 MEDIA_ROOT = env('MEDIA_LOCATION', default=os.path.join(BASE_DIR, 'media'))
-STATIC_ROOT = env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'static'))
+STATIC_ROOT = env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'staticfiles'))
 
 SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='USD')
 
@@ -51,6 +60,7 @@ INSTALLED_APPS = [
     # shuup themes
     'shuup.themes.classic_gray',
     'business_logic',
+    'common',
 
     # shuup
     'shuup.core',
@@ -127,7 +137,7 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
-RAVEN_CONFIG = {'dsn': optenv('SENTRY_DSN')}
+RAVEN_CONFIG = {'dsn': env('SENTRY_DSN')}
 
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='no-reply@myshuup.com')
 
@@ -141,11 +151,15 @@ LANGUAGE_CHOICES = [
 selected_languages = env('LANGUAGES', default='en,es').split(',')
 LANGUAGES = [(code, name) for code, name in LANGUAGE_CHOICES if code in selected_languages]
 
-PARLER_DEFAULT_LANGUAGE_CODE = env('PARLER_DEFAULT_LANGUAGE_CODE', default='es')
+PARLER_DEFAULT_ACTIVATE = True
+PARLER_DEFAULT_LANGUAGE_CODE = env('PARLER_DEFAULT_LANGUAGE_CODE', default='en')
 
 PARLER_LANGUAGES = {
     None: [{'code': c, 'name': n} for (c, n) in LANGUAGES],
-    'default': {'hide_untranslated': False}
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False
+    }
 }
 
 _TEMPLATE_CONTEXT_PROCESSORS = [
@@ -233,3 +247,8 @@ SHUUP_SIMPLE_SEARCH_LIMIT = 150
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SHUUP_ENABLED_ADDONS_FILE = True
+
+CREATE_SUPER_USER = env.bool('CREATE_SUPER_USER', default=False)
+CREATE_DUMMY = env.bool('CREATE_DUMMY_DATA', default=False)
+DEFAULT_SUPER_USER_EMAIL = env('DEFAULT_SUPER_USER_EMAIL', default='hispar@gmail.com')
+DEFAULT_SUPER_USER_PASSWORD = env('DEFAULT_SUPER_USER_PASSWORD', default='as12345678')
