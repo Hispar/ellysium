@@ -31,7 +31,15 @@ DEBUG = env('DEBUG')
 
 SECRET_KEY = env('SECRET_KEY', default='xxx')
 
-DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3')}
+# DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3')}
+
+DATABASES = {
+    'default': env.db("DATABASE_URL"),
+}
+
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+DATABASES['default']['CONN_MAX_AGE'] = 500
 
 MEDIA_URL = env('MEDIA_URL', default='/media/')
 STATIC_URL = env('STATIC_URL', default='/static/')
@@ -39,12 +47,19 @@ STATIC_URL = env('STATIC_URL', default='/static/')
 MEDIA_ROOT = env('MEDIA_LOCATION', default=os.path.join(BASE_DIR, 'media'))
 STATIC_ROOT = env('STATIC_LOCATION', default=os.path.join(BASE_DIR, 'staticfiles'))
 
-SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='USD')
+SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='EUR')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='*').split(',')
 
-EMAIL_CONFIG = env.email_url('EMAIL_URL', default='smtp://localhost:25')
-vars().update(EMAIL_CONFIG)
+EMAIL_FROM = env('EMAIL_FROM', default="hispar@gmail.com")
+EMAIL_HOST = env('EMAIL_HOST', default="")
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default="")
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default="")
+EMAIL_PORT = env('EMAIL_PORT', default="")
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=False)
+
+# EMAIL_CONFIG = env.email_url('EMAIL_URL', default='smtp://localhost:25')
+# vars().update(EMAIL_CONFIG)
 
 INSTALLED_APPS = [
     # django
@@ -139,7 +154,7 @@ LOGIN_URL = '/login/'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 RAVEN_CONFIG = {'dsn': env('SENTRY_DSN')}
 
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='no-reply@myshuup.com')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='admin@tabga.es')
 
 SITE_ID = env('SITE_ID', default=1)
 
