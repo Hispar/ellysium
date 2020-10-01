@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-import dj_database_url
 import environ
 from common.environ import MyEnv
 
@@ -68,19 +67,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # external apps that needs to be loaded before Shuup
     'easy_thumbnails',
+    'common',
     # shuup themes
     'shuup.themes.classic_gray',
-    'business_logic',
-    'common',
-
     # shuup
     'shuup.core',
     'shuup.admin',
-    'shuup.api',
     'shuup.addons',
     'shuup.default_tax',
     'shuup.front',
@@ -99,7 +94,6 @@ INSTALLED_APPS = [
     'shuup.campaigns',
     'shuup.simple_supplier',
     'shuup.order_printouts',
-    'shuup.testing',
     'shuup.utils',
     'shuup.xtheme',
     'shuup.reports',
@@ -121,18 +115,14 @@ INSTALLED_APPS = [
     'reversion',
     'registration',
     'rest_framework',
-    'rest_framework_swagger'
 ]
 
-MIDDLEWARE_CLASSES = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'shuup.front.middleware.ProblemMiddleware',
@@ -246,8 +236,7 @@ SHUUP_SETUP_WIZARD_PANE_SPEC = [
     "shuup.admin.modules.service_providers.views.PaymentWizardPane",
     "shuup.admin.modules.service_providers.views.CarrierWizardPane",
     "shuup.xtheme.admin_module.views.ThemeWizardPane",
-    "shuup.admin.modules.content.views.ContentWizardPane",
-    "shuup.admin.modules.sample_data.views.SampleObjectsWizardPane",
+    "shuup.testing.modules.sample_data.views.SampleObjectsWizardPane" if DEBUG else "",
     "shuup.admin.modules.system.views.TelemetryWizardPane"
 ]
 

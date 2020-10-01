@@ -31,22 +31,6 @@ class Command(BaseCommand):
             help="Create a superuser",
         )
 
-        # Named (optional) arguments
-        parser.add_argument(
-            '--dummy',
-            action='store_true',
-            dest='dummy',
-            help="Create dummy data",
-        )
-
-        # Named (optional) arguments
-        parser.add_argument(
-            '--dummy_schedule',
-            action='store_true',
-            dest='dummy_schedule',
-            help="Create dummy schedule data",
-        )
-
     def handle(self, *args, **options):
         call_command('shuup_init')
 
