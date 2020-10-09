@@ -1,4 +1,5 @@
-shuup
+# shuup
+git+https://github.com/Hispar/shuup.git@feature/spanish#egg=shuup
 shuup-stripe
 # shuup-yaml
 
