@@ -1,5 +1,5 @@
 # shuup==2.1.10
-git+https://github.com/Hispar/shuup.git@feature/spanish#egg=shuup
+git+https://github.com/Hispar/shuup.git@translation/spanish#egg=shuup
 shuup-stripe
 # shuup-yaml
 
