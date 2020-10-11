@@ -50,7 +50,7 @@ SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='EUR')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='*').split(',')
 
-EMAIL_FROM = env('EMAIL_FROM', default="hispar@gmail.com")
+EMAIL_FROM = env('EMAIL_FROM', default="admin@tabga.es")
 EMAIL_HOST = env('EMAIL_HOST', default="")
 EMAIL_HOST_USER = env('EMAIL_HOST_USER', default="")
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default="")
