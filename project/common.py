@@ -250,7 +250,8 @@ SHUUP_SIMPLE_SEARCH_LIMIT = 150
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-SHUUP_ENABLED_ADDONS_FILE = True
+SHUUP_ENABLED_ADDONS_FILE = os.getenv("SHUUP_ENABLED_ADDONS_FILE") or (
+    os.path.join(BASE_DIR, "var", "enabled_addons"))
 
 CREATE_SUPER_USER = env.bool('CREATE_SUPER_USER', default=False)
 CREATE_DUMMY = env.bool('CREATE_DUMMY_DATA', default=False)
