@@ -1,7 +1,7 @@
-shuup
+shuup==2.1.11
 # git+https://github.com/Hispar/shuup.git@translation/spanish#egg=shuup
-shuup-stripe
+shuup-stripe==2.0.0
 # shuup-yaml
 
-python-memcached
-whitenoise
+python-memcached==1.59
+whitenoise==5.2.0
