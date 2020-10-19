@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'common',
     # shuup themes
     'shuup.themes.classic_gray',
+    'kingdomtheme',
     # shuup
     'shuup.core',
     'shuup.admin',

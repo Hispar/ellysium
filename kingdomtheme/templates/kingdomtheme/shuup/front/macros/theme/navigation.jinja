@@ -1,0 +1,52 @@
+{% macro render_navigation(show_quick_login=True) %}
+    <div class="top-nav">
+        <div class="container">
+                        {{ render_logo() }}
+
+            <ul class="navbar-left">
+                {{ render_language_changer() }}
+                {{ render_search() }}
+            </ul>
+            <ul class="navbar-right" id="navigation-basket-partial">
+                {{ render_basket_partial(request.basket) }}
+                {{ render_info_dropdown(show_quick_login) }}
+            </ul>
+        </div>
+    </div>
+    <div class="bottom-nav">
+        <div class="container">
+            <div class="nav-content">
+                {{ render_menu_items() }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_menu_items() %}
+    <div>
+        <button class="toggle-mobile-nav">
+            <span class="sr-only">{% trans %}Menu{% endtrans %}</span>
+            <span class="hamburger"></span>
+        </button>
+        <div class="pages">
+            <ul class="nav-collapse">
+                 {{ xtheme.render_menu_extensions(request) }}
+                {% for c in shuup.general.get_root_categories() if c.visible_in_menu recursive %}
+                    {% set children = c.get_children() %}
+                    <li{% if category and c == category %} class="current-page dropdown"{% endif %}>
+                        {% if children %}
+                            <a href="{{ url("shuup:category", pk=c.pk, slug=c.slug) }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ c.name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {% for child in children if child.visible_in_menu %}
+                                    <li> <a href="{{ url("shuup:category", pk=child.pk, slug=child.slug) }}">{{ child.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <a href="{{ url("shuup:category", pk=c.pk, slug=c.slug) }}">{{ c.name }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
