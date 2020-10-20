@@ -1,7 +1,7 @@
 {% macro render_navigation(show_quick_login=True) %}
     <div class="top-nav">
         <div class="container">
-                        {{ render_logo() }}
+            {{ render_logo() }}
 
             <ul class="navbar-left">
                 {{ render_language_changer() }}
@@ -23,7 +23,7 @@
 {% endmacro %}
 
 {% macro render_menu_items() %}
-    <div>
+    <div class="container">
         <button class="toggle-mobile-nav">
             <span class="sr-only">{% trans %}Menu{% endtrans %}</span>
             <span class="hamburger"></span>
