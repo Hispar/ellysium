@@ -1,22 +1,16 @@
 # -*- coding: utf-8 -*-
 # Python imports
-import itertools
 
 # Django imports
-
-# 3rd Party imports
-
-# App imports
-
-from babel.dates import format_date
 from django.db.models import Sum
 from django.utils.timezone import localtime
 from django.utils.translation import ugettext_lazy as _
+
+# 3rd Party imports
 from shuup.core.models import Product
-
 from shuup.reports.report import ShuupReportBase
-from shuup.utils.i18n import get_current_babel_locale
 
+# App imports
 from manufacturer_reports.forms import ManufacturerOrderReportForm
 from manufacturer_reports.mixins import ManufacturerOrderReportMixin
 

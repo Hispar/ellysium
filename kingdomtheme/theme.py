@@ -9,12 +9,12 @@ from django.utils.translation import ugettext_lazy as _
 
 # 3rd Party imports
 from shuup.xtheme import Theme
-
+from shuup.front.themes import BaseThemeFieldsMixin
 
 # App imports
 
 
-class KingdomWargamesTheme(Theme):
+class KingdomWargamesTheme(BaseThemeFieldsMixin, Theme):
     identifier = "kingdomtheme"
     name = "Kingdom Wargames Theme"
     author = "Hispar"
