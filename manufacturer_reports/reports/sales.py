@@ -25,6 +25,7 @@ class ManufacturerSalesReport(ManufacturerOrderReportMixin, ShuupReportBase):
         {"key": "product_id", "title": _("SKU")},
         {"key": "product_name", "title": _("Product Name")},
         {"key": "product_count", "title": _("Quantity")},
+        {"key": "product_pvp", "title": _("PVP")},
     ]
 
     def extract_date(self, entity):
@@ -42,6 +43,7 @@ class ManufacturerSalesReport(ManufacturerOrderReportMixin, ShuupReportBase):
                 "product_id": product.sku,
                 "product_count": int(product.num_products),
                 "product_name": product.name,
+                "product_pvp": product.order_lines.first().base_unit_price_value,
             })
 
         return self.get_return_data(data)
