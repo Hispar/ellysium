@@ -50,7 +50,7 @@ SHUUP_HOME_CURRENCY = env('SHOP_CURRENCY', default='EUR')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='*').split(',')
 
-EMAIL_FROM = env('EMAIL_FROM', default="admin@tabga.es")
+EMAIL_FROM = env('EMAIL_FROM', default="info@kingdomwargames.com")
 EMAIL_HOST = env('EMAIL_HOST', default="")
 EMAIL_HOST_USER = env('EMAIL_HOST_USER', default="")
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default="")
@@ -146,7 +146,7 @@ LOGIN_URL = '/login/'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 RAVEN_CONFIG = {'dsn': env('SENTRY_DSN')}
 
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='admin@tabga.es')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='info@kingdomwargames.com')
 
 SITE_ID = env('SITE_ID', default=1)
 
