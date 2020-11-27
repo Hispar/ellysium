@@ -146,7 +146,7 @@ LOGIN_URL = '/login/'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 RAVEN_CONFIG = {'dsn': env('SENTRY_DSN')}
 
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='info@kingdomwargames.com')
+DEFAULT_FROM_EMAIL = env('EMAIL_FROM', default='info@kingdomwargames.com')
 
 SITE_ID = env('SITE_ID', default=1)
 
