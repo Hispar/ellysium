@@ -16,9 +16,7 @@
                         <a href="{{ url("shuup:category", pk=c.pk, slug=c.slug) }}">
                             <i class="fa menu-arrow"></i> {{ c.name }}
                         </a>
-                        {% if c == category or category in children %}
-                            <ul>{{ loop(children) }}</ul>
-                        {% endif %}
+                        <ul>{{ loop(children) }}</ul>
                     {% else %}
                         <a href="{{ url("shuup:category", pk=c.pk, slug=c.slug) }}">{{ c.name }}</a>
                     {% endif %}
