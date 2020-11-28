@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'shuup.themes.classic_gray',
     'kingdomtheme',
     'kingdom_search',
+    'kingdom_front',
     'manufacturer_reports',
     # shuup
     'shuup.core',

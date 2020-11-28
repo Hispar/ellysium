@@ -35,14 +35,14 @@
                     {% set children = c.get_children() %}
                     <li{% if category and c == category %} class="current-page dropdown"{% endif %}>
                         {% if children %}
-                            <a href="{{ url("shuup:category", pk=c.pk, slug=c.slug) }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ c.name }} <span class="caret"></span></a>
+                            <a href="{{ url("shuup:category-kingdom", pk=c.pk, slug=c.slug) }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ c.name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 {% for child in children if child.visible_in_menu %}
-                                    <li> <a href="{{ url("shuup:category", pk=child.pk, slug=child.slug) }}">{{ child.name }}</a></li>
+                                    <li> <a href="{{ url("shuup:category-kingdom", pk=child.pk, slug=child.slug) }}">{{ child.name }}</a></li>
                                 {% endfor %}
                             </ul>
                         {% else %}
-                            <a href="{{ url("shuup:category", pk=c.pk, slug=c.slug) }}">{{ c.name }}</a>
+                            <a href="{{ url("shuup:category-kingdom", pk=c.pk, slug=c.slug) }}">{{ c.name }}</a>
                         {% endif %}
                     </li>
                 {% endfor %}
