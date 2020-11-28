@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     # shuup themes
     'shuup.themes.classic_gray',
     'kingdomtheme',
+    'kingdom_search',
     'manufacturer_reports',
     # shuup
     'shuup.core',
@@ -88,7 +89,7 @@ INSTALLED_APPS = [
     'shuup.front.apps.saved_carts',
     'shuup.front.apps.registration',
     'shuup.front.apps.simple_order_notification',
-    'shuup.front.apps.simple_search',
+    # 'shuup.front.apps.simple_search',
     'shuup.front.apps.recently_viewed_products',
     'shuup.notify',
     'shuup.simple_cms',
@@ -204,6 +205,12 @@ TEMPLATES = [
 ]
 
 CACHES = {'default': env.cache(default='memcache://127.0.0.1:11211?key_prefix=project')}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#         'LOCATION': 'kingdomwargames_cache'
+#     }
+# }
 
 SHUUP_PRICING_MODULE = "customer_group_pricing"
 
