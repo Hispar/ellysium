@@ -13,12 +13,12 @@
                 {% set children = c.get_children() %}
                 <li{% if category and c == category %} class="current-page"{% endif %}>
                     {% if children %}
-                        <a href="{{ url("shuup:category", pk=c.pk, slug=c.slug) }}">
+                        <a href="{{ url("shuup:category-kingdom", pk=c.pk, slug=c.slug) }}">
                             <i class="fa menu-arrow"></i> {{ c.name }}
                         </a>
                         <ul>{{ loop(children) }}</ul>
                     {% else %}
-                        <a href="{{ url("shuup:category", pk=c.pk, slug=c.slug) }}">{{ c.name }}</a>
+                        <a href="{{ url("shuup:category-kingdom", pk=c.pk, slug=c.slug) }}">{{ c.name }}</a>
                     {% endif %}
                 </li>
             {% endfor %}

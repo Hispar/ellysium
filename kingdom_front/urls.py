@@ -11,10 +11,10 @@ from django.conf.urls import url
 
 from django.views.decorators.csrf import csrf_exempt
 
-from .views.category import CategoryView
+from .views.category import NewCategoryView
 
 urlpatterns = [
     url(r'^category/(?P<pk>\d+)-(?P<slug>.*)/$',
-        csrf_exempt(CategoryView.as_view()),
+        csrf_exempt(NewCategoryView.as_view()),
         name='category-kingdom'),
 ]

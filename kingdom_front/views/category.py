@@ -15,18 +15,13 @@ from shuup.front.utils.sorts_and_filters import (
     ProductListForm, sort_products
 )
 from shuup.front.utils.views import cache_product_things
+from shuup.front.views.category import CategoryView
 
 
-class CategoryView(DetailView):
+class NewCategoryView(CategoryView):
     template_name = "shuup/front/product/category.jinja"
     model = Category
     template_object_name = "category"
-
-    def get_queryset(self):
-        return self.model.objects.all_visible(
-            customer=self.request.customer,
-            shop=self.request.shop,
-        )
 
     def get_product_filters(self):
         return {
@@ -47,26 +42,28 @@ class CategoryView(DetailView):
             # Use first choice by default
             data["sort"] = form.fields["sort"].widget.choices[0][0]
 
-        # TODO: Check if context cache can be utilized here
-        products = Product.objects.listed(
-            customer=self.request.customer,
-            shop=self.request.shop
-        ).filter(
-            **self.get_product_filters()
-        ).filter(get_query_filters(self.request, category, data=data))
+        products = context["products"] if 'products' in context else None
+        if not products:
+            # TODO: Check if context cache can be utilized here
+            products = Product.objects.listed(
+                customer=self.request.customer,
+                shop=self.request.shop
+            ).filter(
+                **self.get_product_filters()
+            ).filter(get_query_filters(self.request, category, data=data))
 
-        products = get_product_queryset(products, self.request, category, data).distinct()
+            products = get_product_queryset(products, self.request, category, data).distinct()
 
-        products = post_filter_products(self.request, category, products, data)
-        products = products.select_related(
-            'manufacturer', 'primary_image', 'tax_class', 'type'
-        ).prefetch_related(
-            'translations', 'shop_products'
-        )
-        products = cache_product_things(self.request, products)
-        products = sort_products(self.request, category, products, data)
-        context["page_size"] = data.get("limit", 12)
-        context["products"] = products
+            products = post_filter_products(self.request, category, products, data)
+            products = products.select_related(
+                'manufacturer', 'primary_image', 'tax_class', 'type'
+            ).prefetch_related(
+                'translations', 'shop_products'
+            )
+            products = cache_product_things(self.request, products)
+            products = sort_products(self.request, category, products, data)
+            context["page_size"] = data.get("limit", 12)
+            context["products"] = products
 
         if "supplier" in data:
             context["supplier"] = data.get("supplier")
