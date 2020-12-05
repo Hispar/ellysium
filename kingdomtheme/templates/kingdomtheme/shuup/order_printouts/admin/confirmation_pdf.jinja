@@ -1,0 +1,12 @@
+{% extends "shuup/order_printouts/admin/order_base.jinja" %}
+{% block information %}{{ macros.order_information_table(order) }}{% endblock %}
+{% block content %}
+    <br>
+    {{ macros.order_lines_table(order, order.lines.order_by("ordering")) }}
+    <br>
+    {{ macros.tax_information_table(order) }}
+    <br>
+    KINGDOM WARGAMES CIF B87735080 , Rio del Guadalquivir 4 bajo 3 28935 (Móstoles)
+    <br>
+    <img src="https://kingdomwargames.com/media/filer_public_thumbnails/filer_public/0f/64/0f644435-55dd-452c-8615-a3d16749046f/facebook_portada.jpg__148x55_q85_subsampling-2.jpg"></img>
+{% endblock %}
