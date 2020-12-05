@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = env.bool('DEBUG', default=False)
+DEUBG = True
 
 # env.read_env(os.path.join(BASE_DIR, 'ellysium', '.env'))
 
