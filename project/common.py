@@ -206,13 +206,13 @@ TEMPLATES = [
     },
 ]
 
-CACHES = {'default': env.cache(default='memcache://127.0.0.1:11211?key_prefix=project')}
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-#         'LOCATION': 'kingdomwargames_cache'
-#     }
-# }
+# CACHES = {'default': env.cache(default='memcache://127.0.0.1:11211?key_prefix=project')}
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'kingdomwargames_cache'
+    }
+}
 
 SHUUP_PRICING_MODULE = "customer_group_pricing"
 
