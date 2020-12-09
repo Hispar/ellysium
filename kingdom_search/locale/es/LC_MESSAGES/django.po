@@ -20,20 +20,20 @@ msgstr ""
 "Generated-By: Babel 2.1.1\n"
 
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 msgid "Search for products"
-msgstr ""
+msgstr "Buscar productos"
 
 #, python-format
 msgid "No results found for \"<strong>%(query)s</strong>\"."
-msgstr ""
+msgstr "No se encontraron resultados para \"<strong>%(query)s</strong>\"."
 
 msgid ""
 "Limiting results to first 150 products. Refine search terms for better "
 "results."
-msgstr ""
+msgstr "Limitando los resultados a los primeros 150 productos. Refina los términos de búsqueda para obtener mejores resultados."
 
 #, python-format
 msgid "%(n)s results found for \"<strong>%(query)s</strong>\"."
-msgstr ""
+msgstr "Se han encontrado resultados %(n)s para \"<strong>%(query)s</strong>\"."
