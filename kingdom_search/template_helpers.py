@@ -10,10 +10,10 @@ from jinja2.utils import contextfunction
 
 
 class TemplateHelpers(object):
-    name = "simple_search"
+    name = "kingdom_search"
 
     @contextfunction
-    def get_search_form(self, context, template_name="shuup/simple_search/search_form.jinja"):
+    def get_search_form(self, context, template_name="shuup/kingdom_search/search_form.jinja"):
         """
         Get a product search form, usable e.g. for navigation bars.
         The `q` request parameter is used by default to pre-fill the search query field.

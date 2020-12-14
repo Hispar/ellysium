@@ -78,7 +78,7 @@ def get_search_product_ids(request, query, limit=settings.SHUUP_SIMPLE_SEARCH_LI
     }
 
     key, val = context_cache.get_cached_value(
-        identifier="simple_search", item=None, context=request, cache_key_elements=cache_key_elements)
+        identifier="kingdom_search", item=None, context=request, cache_key_elements=cache_key_elements)
     if val is not None:
         return val
 

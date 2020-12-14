@@ -27,13 +27,13 @@ msgstr "Buscar productos"
 
 #, python-format
 msgid "No results found for \"<strong>%(query)s</strong>\"."
-msgstr "No se encontraron resultados para \"<strong>%(query)s</strong>\"."
+msgstr "No hay resultado para \"<strong>%(query)s</strong>\"."
 
 msgid ""
 "Limiting results to first 150 products. Refine search terms for better "
 "results."
-msgstr "Limitando los resultados a los primeros 150 productos. Refina los términos de búsqueda para obtener mejores resultados."
+msgstr "Se han limitado los resultados a los primeros 15 productos. Refina la busqueda para mejores resultados."
 
 #, python-format
 msgid "%(n)s results found for \"<strong>%(query)s</strong>\"."
-msgstr "Se han encontrado resultados %(n)s para \"<strong>%(query)s</strong>\"."
+msgstr "%(n)s resultados encontrados para \"<strong>%(query)s</strong>\"."

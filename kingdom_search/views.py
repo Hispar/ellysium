@@ -20,7 +20,7 @@ from shuup.front.utils.views import cache_product_things
 
 class SearchView(ListView):
     form_class = ProductListForm
-    template_name = "shuup/simple_search/search.jinja"
+    template_name = "shuup/kingdom_search/search.jinja"
     model = Product
     context_object_name = "products"
 

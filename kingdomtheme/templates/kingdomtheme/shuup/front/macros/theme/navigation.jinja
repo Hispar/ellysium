@@ -53,11 +53,11 @@
 
 
 {% macro render_search() %}
-    {% if shuup.simple_search %}
+    {% if shuup.kingdom_search %}
         <li>
-            {% block searchform %}
-                {{ shuup.simple_search.get_search_form() }}
-            {% endblock %}
+{#            {% block searchform %}#}
+                {{ shuup.kingdom_search.get_search_form() }}
+{#            {% endblock %}#}
         </li>
     {% endif %}
 {% endmacro %}
