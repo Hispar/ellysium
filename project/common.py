@@ -154,15 +154,15 @@ DEFAULT_FROM_EMAIL = env('EMAIL_FROM', default='info@kingdomwargames.com')
 SITE_ID = env('SITE_ID', default=1)
 
 LANGUAGE_CHOICES = [
-    ('en', 'English'),
+    # ('en', 'English'),
     ('es', 'Spanish'),
 ]
 
-selected_languages = env('LANGUAGES', default='en,es').split(',')
+selected_languages = env('LANGUAGES', default='es').split(',')
 LANGUAGES = [(code, name) for code, name in LANGUAGE_CHOICES if code in selected_languages]
 
 PARLER_DEFAULT_ACTIVATE = True
-PARLER_DEFAULT_LANGUAGE_CODE = env('PARLER_DEFAULT_LANGUAGE_CODE', default='en')
+PARLER_DEFAULT_LANGUAGE_CODE = env('PARLER_DEFAULT_LANGUAGE_CODE', default='es')
 
 PARLER_LANGUAGES = {
     None: [{'code': c, 'name': n} for (c, n) in LANGUAGES],
