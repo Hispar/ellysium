@@ -1,6 +1,6 @@
 shuup==2.3.0
 # git+https://github.com/Hispar/shuup.git@translation/spanish#egg=shuup
-git+https://github.com/Hispar/shuup-stripe@6e28ec0de2d3b02499fd13ac24653627cfab9173#egg=shuup-stripe
+git+https://github.com/Hispar/shuup-stripe.git@refactor#egg=shuup-stripe
 
 # shuup-stripe==2.0.0
 # shuup-yaml
