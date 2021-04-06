@@ -32,7 +32,8 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        call_command('shuup_init')
+        pass
+        # call_command('shuup_init')
 
         # if options['create_super_user']:
         #     self.create_super_user()
