@@ -51,4 +51,5 @@ class Command(BaseCommand):
             )
             print('Super user created')
         except Exception as exc:
-            raise CommandError(exc)
+            print(exc)
+            pass
