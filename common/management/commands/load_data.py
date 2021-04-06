@@ -34,10 +34,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         call_command('shuup_init')
 
-        if options['create_super_user']:
-            self.create_super_user()
-        elif settings.CREATE_SUPER_USER:
-            self.create_super_user()
+        # if options['create_super_user']:
+        #     self.create_super_user()
+        # elif settings.CREATE_SUPER_USER:
+        #     self.create_super_user()
 
     @staticmethod
     def create_super_user():
